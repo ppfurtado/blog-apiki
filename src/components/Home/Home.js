@@ -1,22 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import logo from '../../assets/logoTitle.png'
 
 const Wrapper = styled.div`
-  width: 100%;
   height: 100vh;
-  background: linear-gradient(0deg, rgba(32,111,184,1) 30%, rgba(131, 127, 181, 1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-const ContainerImageLogo = styled.div`
-  margin-top: 68px;
-`
-
-const ImageLogo = styled.img`
-
 `
 const ContainerCards = styled.div`
   display: grid;
@@ -70,16 +60,14 @@ const Home = () => {
 
   return (
     <Wrapper>
-      <ContainerImageLogo>
-        <ImageLogo src={logo} />
-      </ContainerImageLogo>
       <ContainerCards>
         {
-          data && data.map((element) =>(
+          data && data.map((element, index) =>(
             <Card key={element.id}>
-              <Link to='/internal'>
-                <ImagePost src={element._embedded['wp:featuredmedia'][0].source_url} alt=""/>
+              <Link to={`internal/${index}/${element.slug}`}>
+                <ImagePost src={element._embedded['wp:featuredmedia'][0].source_url} alt="image post"/>
                 <TitlePost> { element.title.rendered } </TitlePost>
+
               </Link>
               <LinkPost href={element.link} target="_blank">
                 Post Original...
