@@ -1,26 +1,28 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import styled from 'styled-components'
+import { GETPOST_GET } from '../../api'
 
 const Wrapper = styled.div`
   height: 100vh;
   margin: 0 auto 0 auto;
   width: 80%;
 `
-const Internal = (props) => {
+const Internal = () => {
   const [data, setData] = React.useState(null)
 
   const { slug } = useParams()
+  const { url } = GETPOST_GET(slug)
 
   React.useEffect(()=> {
     async function getData() {
-      const response = await fetch(`https://blog.apiki.com/wp-json/wp/v2/posts?_embed&slug=${slug}`)
+      const response = await fetch(url)
       const json = await response.json()
       setData(json)
       return json
     }
     getData()
-  },[slug])
+  },[url])
   
   const stringToHmtl = (str) => {
     return {__html: str}
@@ -30,8 +32,14 @@ const Internal = (props) => {
 
   return (
     <Wrapper className="internal" >
+      
       {
-        data && <div dangerouslySetInnerHTML={stringToHmtl(data[0].content.rendered)} />
+        data && <>
+          <img src={data[0]._embedded['wp:featuredmedia'][0].source_url} alt=""/> 
+          <h2>{data[0].title.rendered}</h2>
+          <div dangerouslySetInnerHTML={stringToHmtl(data[0].content.rendered)} />
+          </>
+  
    
       }
       

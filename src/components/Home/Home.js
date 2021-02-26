@@ -1,24 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { GETALLPOSTS_GET } from '../../api'
 
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
+  margin: 0 auto 0 auto;
 `
 const ContainerCards = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-`
+
+  @media(max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media(max-width: 470px){
+    grid-template-columns:  1fr;
+  }
+
+  `
 const Card = styled.div`
   width: 220px;
   height: 220px;
-  background: white;
+  background: #e0e0eb;
   display: grid;
   transition: all .3s;
+  border-radius: 5px;
+  transition: all 0.3s;
 
   &:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -26,7 +41,7 @@ const Card = styled.div`
   }
 `
 const ImagePost = styled.img`
-
+  border-radius: 5px;
 `
 const TitlePost = styled.p`
   margin-left: 10px;
@@ -44,18 +59,18 @@ const LinkPost = styled.a`
 
 const Home = () => {
   const [data, setData] = React.useState(null)
-
+  const { url } = GETALLPOSTS_GET()
 
   React.useEffect(()=> {
     async function getData(){
-      const response = await fetch('https://blog.apiki.com/wp-json/wp/v2/posts?_embed&categories=518')
+      const response = await fetch(url)
       const json = await response.json()
       setData(json)
       return json
     }
     getData()
 
-  },[])
+  },[url])
 
 
   return (

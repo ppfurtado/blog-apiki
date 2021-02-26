@@ -5,9 +5,10 @@ import logo from '../../assets/logoTitle.png'
 
 
 const ContainerImageLogo = styled.div`
-  margin-top: 10px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
+  background: white;
 `
 const ImageLogo = styled.img`
 `
