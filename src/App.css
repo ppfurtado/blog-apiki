@@ -7,7 +7,6 @@ body {
   color: #333;
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Spectral', Georgia;
-  /* background: linear-gradient(0deg, rgba(32,111,184,1) 30%, rgba(131, 127, 181, 1) 100%); */
 }
 
 h1, h2, h3, h4, p {

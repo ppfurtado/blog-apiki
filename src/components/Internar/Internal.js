@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router'
 import styled from 'styled-components'
 import { GETPOST_GET } from '../../api'
+import Loading from '../../Helper/Loading'
+import useFetch from '../../Hooks/useFetch'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -9,27 +11,30 @@ const Wrapper = styled.div`
   width: 80%;
 `
 const Internal = () => {
-  const [data, setData] = React.useState(null)
+  // const [data, setData] = React.useState(null)
 
+  
   const { slug } = useParams()
-  const { url } = GETPOST_GET(slug)
-
-  React.useEffect(()=> {
-    async function getData() {
-      const response = await fetch(url)
-      const json = await response.json()
-      setData(json)
-      return json
+  const { data, loading, request } = useFetch()
+  
+  
+  
+  React.useEffect(()=>{
+    
+    async function fetchPost(){
+      const { url } = GETPOST_GET(slug)
+      const { response } = await request(url)
+      
     }
-    getData()
-  },[url])
+    fetchPost()
+  },[])
+
   
   const stringToHmtl = (str) => {
     return {__html: str}
   }
 
-  console.log('DATA', data)
-
+  if(loading) return <Loading />
   return (
     <Wrapper className="internal" >
       
@@ -39,8 +44,6 @@ const Internal = () => {
           <h2>{data[0].title.rendered}</h2>
           <div dangerouslySetInnerHTML={stringToHmtl(data[0].content.rendered)} />
           </>
-  
-   
       }
       
     </Wrapper>

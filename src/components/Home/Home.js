@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { GETALLPOSTS_GET } from '../../api'
+import Loading from '../../Helper/Loading'
+import useFetch from '../../Hooks/useFetch'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -58,21 +60,16 @@ const LinkPost = styled.a`
 
 
 const Home = () => {
-  const [data, setData] = React.useState(null)
-  const { url } = GETALLPOSTS_GET()
-
+  const { data, loading, error, request } = useFetch()
+  
   React.useEffect(()=> {
-    async function getData(){
-      const response = await fetch(url)
-      const json = await response.json()
-      setData(json)
-      return json
+    async function fetchPosts () {
+      const { url } = GETALLPOSTS_GET()
+      const { response, json } = await request(url)      
     }
-    getData()
-
-  },[url])
-
-
+    fetchPosts()
+  },[request])
+  if(loading) return <Loading />
   return (
     <Wrapper>
       <ContainerCards>
