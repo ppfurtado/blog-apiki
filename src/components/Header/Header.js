@@ -11,12 +11,14 @@ const ContainerImageLogo = styled.div`
   background: white;
 `
 const ImageLogo = styled.img`
+  display: block;
+  max-width: 100%;
 `
 
 const Header = () => {
   return (
     <ContainerImageLogo>
-      <ImageLogo src={logo} />
+      <ImageLogo src={logo} alt="blog Apiki"/>
     </ContainerImageLogo>
   )
 }

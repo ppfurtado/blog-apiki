@@ -11,23 +11,18 @@ const Wrapper = styled.div`
   width: 80%;
 `
 const Internal = () => {
-  // const [data, setData] = React.useState(null)
-
-  
   const { slug } = useParams()
   const { data, loading, request } = useFetch()
-  
-  
   
   React.useEffect(()=>{
     
     async function fetchPost(){
       const { url } = GETPOST_GET(slug)
       const { response } = await request(url)
-      
+      return response
     }
     fetchPost()
-  },[])
+  },[slug,request])
 
   
   const stringToHmtl = (str) => {
@@ -40,9 +35,10 @@ const Internal = () => {
       
       {
         data && <>
-          <img src={data[0]._embedded['wp:featuredmedia'][0].source_url} alt=""/> 
+          <img src={data[0]._embedded['wp:featuredmedia'][0].source_url} alt={data[0].title.rendered}/> 
           <h2>{data[0].title.rendered}</h2>
           <div dangerouslySetInnerHTML={stringToHmtl(data[0].content.rendered)} />
+          <p>Autor: </p>
           </>
       }
       

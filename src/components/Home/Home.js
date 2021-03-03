@@ -60,12 +60,13 @@ const LinkPost = styled.a`
 
 
 const Home = () => {
-  const { data, loading, error, request } = useFetch()
+  const { data, loading, request } = useFetch()
   
   React.useEffect(()=> {
     async function fetchPosts () {
       const { url } = GETALLPOSTS_GET()
-      const { response, json } = await request(url)      
+      const { response } = await request(url)
+      return response
     }
     fetchPosts()
   },[request])
@@ -81,7 +82,7 @@ const Home = () => {
                 <TitlePost> { element.title.rendered } </TitlePost>
 
               </Link>
-              <LinkPost href={element.link} target="_blank">
+              <LinkPost href={element.link} target="_blank" rel="noopener">
                 Post Original...
               </LinkPost>
             </Card>
