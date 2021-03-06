@@ -1,6 +1,6 @@
 # Blog Apiki
 
-Este projeto foi criado a partir de um challenge front end da emprensa [Apiki](https://apiki.com/) com o objetivo de praticar 
+Este projeto foi criado a partir de um [challenge](https://github.com/ppfurtado/front-end-challenge) front end da emprensa [Apiki](https://apiki.com/) com o objetivo de praticar 
 
 
 ## 🚀Começando
