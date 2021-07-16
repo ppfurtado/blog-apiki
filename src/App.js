@@ -1,19 +1,19 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Internal from './components/Internar/Internal';
+import { BrowserRouter, Route, Routes, HashRouter } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Internal from "./components/Internar/Internal";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/internal/:id/:slug" element={<Internal />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
