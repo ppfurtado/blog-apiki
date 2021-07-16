@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/blog-apiki/static/css/main.df88b611.chunk.css",
+    "main.js": "/blog-apiki/static/js/main.fe74be57.chunk.js",
+    "main.js.map": "/blog-apiki/static/js/main.fe74be57.chunk.js.map",
+    "runtime-main.js": "/blog-apiki/static/js/runtime-main.68aeba86.js",
+    "runtime-main.js.map": "/blog-apiki/static/js/runtime-main.68aeba86.js.map",
+    "static/js/2.041af828.chunk.js": "/blog-apiki/static/js/2.041af828.chunk.js",
+    "static/js/2.041af828.chunk.js.map": "/blog-apiki/static/js/2.041af828.chunk.js.map",
+    "index.html": "/blog-apiki/index.html",
+    "static/css/main.df88b611.chunk.css.map": "/blog-apiki/static/css/main.df88b611.chunk.css.map",
+    "static/js/2.041af828.chunk.js.LICENSE.txt": "/blog-apiki/static/js/2.041af828.chunk.js.LICENSE.txt",
+    "static/media/logoTitle.e8494c33.png": "/blog-apiki/static/media/logoTitle.e8494c33.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.68aeba86.js",
+    "static/js/2.041af828.chunk.js",
+    "static/css/main.df88b611.chunk.css",
+    "static/js/main.fe74be57.chunk.js"
+  ]
+}
